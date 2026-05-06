@@ -345,7 +345,7 @@ void cbTimerWiFi(TimerHandle_t xTimer) {
 void taskSensor(void* pvParam) {
   (void)pvParam;
   for (;;) {
-    ulTaskNotifyTake(pdTRUE, portMAX_DELAY);  // chờ tmrDHT notify
+    ulTaskNotifyTake(pdTRUE, portMAX_DELAY);
 
     float t = dht.readTemperature();
     float h = dht.readHumidity();
@@ -368,7 +368,7 @@ void taskSensor(void* pvParam) {
 void taskLCD(void* pvParam) {
   (void)pvParam;
   for (;;) {
-    ulTaskNotifyTake(pdTRUE, portMAX_DELAY);  // chờ tmrLCD notify (hoặc notify từ taskRelayCtrl)
+    ulTaskNotifyTake(pdTRUE, portMAX_DELAY);
 
     xSemaphoreTake(mtxSensor, portMAX_DELAY);
     float t = g_sensor.temp;
